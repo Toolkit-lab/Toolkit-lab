@@ -1,0 +1,7 @@
+https://toolkit-lab.github.io/
+https://toolkit-lab.github.io/doc-convert.html
+https://toolkit-lab.github.io/img-compress.html
+https://toolkit-lab.github.io/img-convert.html
+https://toolkit-lab.github.io/pdf-compress.html
+https://toolkit-lab.github.io/pdfword-convert.html
+https://toolkit-lab.github.io/video-compress.html
