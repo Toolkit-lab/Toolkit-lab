@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolKit - Your All-in-One Image & PDF Solution</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -62,6 +62,8 @@
             gap: 10px;
             font-size: 1.8rem;
             font-weight: 700;
+            text-decoration: none;
+            color: white;
         }
 
         .logo i {
@@ -122,6 +124,8 @@
             cursor: pointer;
             transition: all 0.3s;
             border: none;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-outline {
@@ -630,10 +634,10 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
+                <a href="#" class="logo">
                     <i class="fas fa-tools"></i>
                     <span>ToolKit</span>
-                </div>
+                </a>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
@@ -642,8 +646,8 @@
                 <nav id="mainNav">
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">Image Tools</a></li>
-                        <li><a href="#">PDF Tools</a></li>
+                        <li><a href="#compression-tools">Image Tools</a></li>
+                        <li><a href="#conversion-tools">PDF Tools</a></li>
                         <li><a href="#" onclick="openModal('aboutModal')">About Us</a></li>
                         <li><a href="#" onclick="openModal('contactModal')">Contact</a></li>
                         <li><a href="#" onclick="openModal('privacyModal')">Privacy Policy</a></li>
@@ -660,8 +664,8 @@
             <p>Free online tools to compress, convert, edit, and enhance your images and PDF documents with ease.</p>
             
             <div class="hero-buttons">
-                <button class="btn btn-primary btn-large">Explore Image Tools</button>
-                <button class="btn btn-outline btn-large">Discover PDF Tools</button>
+                <a href="#compression-tools" class="btn btn-primary btn-large">Explore Image Tools</a>
+                <a href="#conversion-tools" class="btn btn-outline btn-large">Discover PDF Tools</a>
             </div>
             
             <div class="tool-categories">
@@ -720,7 +724,7 @@
                     <div class="tool-content">
                         <h3>Image Compressor</h3>
                         <p>Reduce image file size without noticeable quality loss</p>
-                        <a href="/Toolkit-lab.github.io/img-compress.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="/Toolkit-lab.github.io/img-compress.html" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -731,7 +735,7 @@
                     <div class="tool-content">
                         <h3>PDF Compressor</h3>
                         <p>Reduce PDF file size while maintaining quality</p>
-                        <a href="/Toolkit-lab.github.io/pdf-compress.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="/Toolkit-lab.github.io/pdf-compress.html" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -742,7 +746,7 @@
                     <div class="tool-content">
                         <h3>Video Compressor</h3>
                         <p>Compress videos for faster sharing and streaming</p>
-                        <a href="/Toolkit-lab.github.io/video-compress.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="/Toolkit-lab.github.io/video-compress.html" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -765,7 +769,7 @@
                     <div class="tool-content">
                         <h3>Image Converter</h3>
                         <p>Convert between JPG, PNG, WEBP, and other formats</p>
-                        <a href="/Toolkit-lab.github.io/img-convert.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="/Toolkit-lab.github.io/img-convert.html" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -776,7 +780,7 @@
                     <div class="tool-content">
                         <h3>PDF to Word Converter</h3>
                         <p>Convert PDF files to editable Word documents</p>
-                        <a href="/Toolkit-lab.github.io/pdftoword-convert.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="/Toolkit-lab.github.io/pdftoword-convert.html" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -787,7 +791,7 @@
                     <div class="tool-content">
                         <h3>Document Converter</h3>
                         <p>Convert between various document formats</p>
-                        <a href="/Toolkit-lab.github.io/doc-convert.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="/Toolkit-lab.github.io/doc-convert.html" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -929,16 +933,16 @@
                 <div class="footer-column">
                     <h3>Image Tools</h3>
                     <ul>
-                        <li><a href="#">Image Compressor</a></li>
-                        <li><a href="#">Image Converter</a></li>
+                        <li><a href="/Toolkit-lab.github.io/img-compress.html">Image Compressor</a></li>
+                        <li><a href="/Toolkit-lab.github.io/img-convert.html">Image Converter</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>PDF Tools</h3>
                     <ul>
-                        <li><a href="#">PDF Compressor</a></li>
-                        <li><a href="#">PDF to Word</a></li>
+                        <li><a href="/Toolkit-lab.github.io/pdf-compress.html">PDF Compressor</a></li>
+                        <li><a href="/Toolkit-lab.github.io/pdftoword-convert.html">PDF to Word</a></li>
                     </ul>
                 </div>
                 
