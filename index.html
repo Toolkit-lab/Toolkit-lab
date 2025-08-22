@@ -543,6 +543,74 @@
             color: var(--primary);
         }
 
+        /* Tool Demo Pages */
+        .tool-demo {
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tool-demo h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--primary);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-area:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .tool-actions {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .action-btn {
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .action-btn:hover {
+            background: var(--secondary);
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn i {
+            margin-right: 8px;
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
@@ -582,6 +650,10 @@
                 flex-direction: column;
                 align-items: center;
             }
+            
+            .tool-actions {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 576px) {
@@ -591,6 +663,14 @@
             
             .section-header h2 {
                 font-size: 2rem;
+            }
+            
+            .tool-demo {
+                padding: 20px;
+            }
+            
+            .upload-area {
+                padding: 20px;
             }
         }
 
@@ -735,7 +815,7 @@
                     <div class="tool-content">
                         <h3>PDF Compressor</h3>
                         <p>Reduce PDF file size while maintaining quality</p>
-                        <a href="/Toolkit-lab.github.io/pdf-compress.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="#pdf-compressor-demo" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -746,8 +826,65 @@
                     <div class="tool-content">
                         <h3>Video Compressor</h3>
                         <p>Compress videos for faster sharing and streaming</p>
-                        <a href="/Toolkit-lab.github.io/video-compress.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="#video-compressor-demo" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Compressor Demo -->
+    <section class="tools-section" id="image-compressor-demo">
+        <div class="container">
+            <a href="#" class="back-btn"><i class="fas fa-arrow-left"></i> Back to All Tools</a>
+            
+            <div class="section-header">
+                <h2>Image Compressor</h2>
+                <p>Reduce image file size without losing quality</p>
+            </div>
+            
+            <div class="tool-demo">
+                <div class="upload-area" id="imageUploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Upload an Image</h3>
+                    <p>Click to browse or drag and drop your image here</p>
+                    <p>Supported formats: JPG, PNG, WebP</p>
+                </div>
+                
+                <div class="tool-actions">
+                    <button class="action-btn">Compress Image</button>
+                    <button class="action-btn">Download Compressed Image</button>
+                </div>
+                
+                <div id="imagePreview"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Compressor Demo -->
+    <section class="tools-section" id="pdf-compressor-demo">
+        <div class="container">
+            <a href="#" class="back-btn"><i class="fas fa-arrow-left"></i> Back to All Tools</a>
+            
+            <div class="section-header">
+                <h2>PDF Compressor</h2>
+                <p>Reduce PDF file size while maintaining quality</p>
+            </div>
+            
+            <div class="tool-demo">
+                <div class="upload-area" id="pdfUploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Upload a PDF</h3>
+                    <p>Click to browse or drag and drop your PDF here</p>
+                </div>
+                
+                <div class="tool-actions">
+                    <button class="action-btn">Compress PDF</button>
+                    <button class="action-btn">Download Compressed PDF</button>
                 </div>
             </div>
         </div>
@@ -769,7 +906,7 @@
                     <div class="tool-content">
                         <h3>Image Converter</h3>
                         <p>Convert between JPG, PNG, WEBP, and other formats</p>
-                        <a href="/Toolkit-lab.github.io/img-convert.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="#image-converter-demo" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -780,7 +917,7 @@
                     <div class="tool-content">
                         <h3>PDF to Word Converter</h3>
                         <p>Convert PDF files to editable Word documents</p>
-                        <a href="/Toolkit-lab.github.io/pdftoword-convert.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="#pdf-to-word-demo" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -791,7 +928,7 @@
                     <div class="tool-content">
                         <h3>Document Converter</h3>
                         <p>Convert between various document formats</p>
-                        <a href="/Toolkit-lab.github.io/doc-convert.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="#document-converter-demo" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -933,16 +1070,16 @@
                 <div class="footer-column">
                     <h3>Image Tools</h3>
                     <ul>
-                        <li><a href="/Toolkit-lab.github.io/img-compress.html">Image Compressor</a></li>
-                        <li><a href="/Toolkit-lab.github.io/img-convert.html">Image Converter</a></li>
+                        <li><a href="#image-compressor-demo">Image Compressor</a></li>
+                        <li><a href="#image-converter-demo">Image Converter</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>PDF Tools</h3>
                     <ul>
-                        <li><a href="/Toolkit-lab.github.io/pdf-compress.html">PDF Compressor</a></li>
-                        <li><a href="/Toolkit-lab.github.io/pdftoword-convert.html">PDF to Word</a></li>
+                        <li><a href="#pdf-compressor-demo">PDF Compressor</a></li>
+                        <li><a href="#pdf-to-word-demo">PDF to Word</a></li>
                     </ul>
                 </div>
                 
@@ -1082,11 +1219,14 @@
             }
         });
 
-        // Smooth scrolling for category links
-        document.querySelectorAll('.category-card a').forEach(link => {
-            link.addEventListener('click', function(e) {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                
                 const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
@@ -1094,6 +1234,9 @@
                         top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mainNav').classList.remove('active');
                 }
             });
         });
@@ -1117,6 +1260,19 @@
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
                 }
+            });
+        });
+
+        // Demo tool functionality
+        document.querySelectorAll('.upload-area').forEach(area => {
+            area.addEventListener('click', function() {
+                alert('In a real implementation, this would open a file browser to select a file.');
+            });
+        });
+
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('This is a demo. In a real implementation, this would process your file.');
             });
         });
     </script>
