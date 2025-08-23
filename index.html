@@ -4,12 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolKit - Your All-in-One Image & PDF Solution</title>
+    <meta name="description" content="Free online tools to compress, convert, edit, and enhance your images and PDF documents. All tools work directly in your browser with no uploads required.">
+    <meta name="keywords" content="image compression, PDF tools, file conversion, online tools, free tools, image converter, PDF compressor">
+    <meta name="author" content="ToolKit">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://toolkit-lab.github.io/">
+    
+    <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ToolKit",
+      "url": "https://toolkit-lab.github.io/",
+      "description": "Free online tools to compress, convert, edit, and enhance your images and PDF documents.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -427,6 +457,59 @@
             font-size: 0.9rem;
         }
 
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: linear-gradient(rgba(67, 97, 238, 0.05) 0%, rgba(58, 12, 163, 0.1) 100%);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -496,6 +579,48 @@
             font-size: 0.9rem;
         }
 
+        /* Backlinks Section */
+        .backlinks {
+            padding: 40px 0;
+            background-color: white;
+        }
+
+        .backlinks-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .backlinks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .backlink-card {
+            padding: 15px;
+            background: var(--light);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .backlink-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .backlink-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .backlink-card a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -543,6 +668,22 @@
 
         .modal-header h2 {
             color: var(--primary);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 15px 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
         }
 
         /* Responsive Design */
@@ -650,6 +791,7 @@
                         <li><a href="#">Home</a></li>
                         <li><a href="#compression-tools">Image Tools</a></li>
                         <li><a href="#conversion-tools">PDF Tools</a></li>
+                        <li><a href="#faq-section">FAQs</a></li>
                         <li><a href="#" onclick="openModal('aboutModal')">About Us</a></li>
                         <li><a href="#" onclick="openModal('contactModal')">Contact</a></li>
                         <li><a href="#" onclick="openModal('privacyModal')">Privacy Policy</a></li>
@@ -658,6 +800,13 @@
             </div>
         </div>
     </header>
+
+    <!-- Breadcrumb -->
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">Home</a> > All-in-One Image & PDF Tools
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -860,6 +1009,78 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our tools</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are these tools completely free to use?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all our tools are 100% free with no hidden costs, registration requirements, or limitations. We believe in providing valuable tools that are accessible to everyone.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do you ensure the privacy of my files?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All file processing happens directly in your browser using JavaScript. Your files never leave your computer and are not uploaded to any server. This ensures complete privacy and security for your sensitive documents.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What file formats do you support for conversion?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We support a wide range of formats including JPG, PNG, WEBP, GIF for images, and PDF, DOCX, PPTX for documents. Our <a href="/img-convert.html">Image Converter</a> and <a href="/doc-convert.html">Document Converter</a> tools support the most popular formats.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there a file size limit for processing?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Since processing happens in your browser, the limitations depend on your device's capabilities. Generally, modern browsers can handle files up to 2GB, but for optimal performance, we recommend files under 500MB.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need to install any software?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No installation is required. Our tools work directly in your web browser. All you need is an internet connection to access our website, and the processing happens locally on your device.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can I support ToolKit?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The best way to support us is by sharing our tools with others who might find them useful. You can also follow us on <a href="#">social media</a> and provide feedback to help us improve our tools.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonials -->
     <section class="testimonials">
         <div class="container">
@@ -917,6 +1138,38 @@
         </div>
     </section>
 
+    <!-- Backlinks Section -->
+    <section class="backlinks">
+        <div class="container">
+            <div class="backlinks-container">
+                <h2>Related Resources</h2>
+                <p>Check out these helpful resources for working with images and PDFs</p>
+                
+                <div class="backlinks-grid">
+                    <div class="backlink-card">
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types" target="_blank" rel="noopener">Image File Format Guide (MDN)</a>
+                        <p>Comprehensive guide to different image formats</p>
+                    </div>
+                    
+                    <div class="backlink-card">
+                        <a href="https://www.adobe.com/acrobat/resources/how-to-compress-pdf.html" target="_blank" rel="noopener">Adobe PDF Compression Guide</a>
+                        <p>Official guide to PDF compression best practices</p>
+                    </div>
+                    
+                    <div class="backlink-card">
+                        <a href="https://web.dev/optimize-images/" target="_blank" rel="noopener">Web Image Optimization</a>
+                        <p>Best practices for optimizing web images</p>
+                    </div>
+                    
+                    <div class="backlink-card">
+                        <a href="https://www.w3.org/WAI/tutorials/images/" target="_blank" rel="noopener">Web Accessibility for Images</a>
+                        <p>Making images accessible on the web</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -937,6 +1190,8 @@
                     <ul>
                         <li><a href="/Toolkit-lab.github.io/img-compress.html">Image Compressor</a></li>
                         <li><a href="/Toolkit-lab.github.io/img-convert.html">Image Converter</a></li>
+                        <li><a href="#">Image Resizer</a></li>
+                        <li><a href="#">Watermark Remover</a></li>
                     </ul>
                 </div>
                 
@@ -945,6 +1200,8 @@
                     <ul>
                         <li><a href="/Toolkit-lab.github.io/pdf-compress.html">PDF Compressor</a></li>
                         <li><a href="/Toolkit-lab.github.io/pdftoword-convert.html">PDF to Word</a></li>
+                        <li><a href="#">PDF Merger</a></li>
+                        <li><a href="#">PDF Splitter</a></li>
                     </ul>
                 </div>
                 
@@ -953,6 +1210,7 @@
                     <ul>
                         <li><a href="#" onclick="openModal('aboutModal')">About Us</a></li>
                         <li><a href="#" onclick="openModal('contactModal')">Contact</a></li>
+                        <li><a href="#faq-section">FAQs</a></li>
                         <li><a href="#" onclick="openModal('privacyModal')">Privacy Policy</a></li>
                     </ul>
                 </div>
@@ -998,8 +1256,8 @@
             
             <h3>Get in Touch</h3>
             <p><strong>Email:</strong> <a href="mailto:support@toolkit.com">support@toolkit.com</a></p>
-            <p><strong>Twitter:</strong> <a href="https://twitter.com/toolkit" target="_blank">@toolkit</a></p>
-            <p><strong>Facebook:</strong> <a href="https://facebook.com/toolkit" target="_blank">facebook.com/toolkit</a></p>
+            <p><strong>Twitter:</strong> <a href="https://twitter.com/toolkit" target="_blank" rel="noopener">@toolkit</a></p>
+            <p><strong>Facebook:</strong> <a href="https://facebook.com/toolkit" target="_blank" rel="noopener">facebook.com/toolkit</a></p>
             
             <h3>Report an Issue</h3>
             <p>If you're experiencing problems with any of our tools, please contact us at <a href="mailto:bugs@toolkit.com">bugs@toolkit.com</a> with the following information:</p>
@@ -1121,6 +1379,87 @@
                 }
             });
         });
+
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    if (q !== question) {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current FAQ item
+                question.classList.toggle('active');
+                answer.classList.toggle('active');
+            });
+        });
+
+        // Add structured data for FAQ
+        const faqStructuredData = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Are these tools completely free to use?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, all our tools are 100% free with no hidden costs, registration requirements, or limitations. We believe in providing valuable tools that are accessible to everyone."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do you ensure the privacy of my files?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "All file processing happens directly in your browser using JavaScript. Your files never leave your computer and are not uploaded to any server. This ensures complete privacy and security for your sensitive documents."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What file formats do you support for conversion?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We support a wide range of formats including JPG, PNG, WEBP, GIF for images, and PDF, DOCX, PPTX for documents. Our Image Converter and Document Converter tools support the most popular formats."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is there a file size limit for processing?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Since processing happens in your browser, the limitations depend on your device's capabilities. Generally, modern browsers can handle files up to 2GB, but for optimal performance, we recommend files under 500MB."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do I need to install any software?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No installation is required. Our tools work directly in your web browser. All you need is an internet connection to access our website, and the processing happens locally on your device."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How can I support ToolKit?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The best way to support us is by sharing our tools with others who might find them useful. You can also follow us on social media and provide feedback to help us improve our tools."
+                    }
+                }
+            ]
+        };
+
+        // Add FAQ structured data to the page
+        const faqScript = document.createElement('script');
+        faqScript.type = 'application/ld+json';
+        faqScript.text = JSON.stringify(faqStructuredData);
+        document.head.appendChild(faqScript);
     </script>
 </body>
 </html>
