@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolKit - Your All-in-One Image & PDF Solution</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -62,8 +61,6 @@
             gap: 10px;
             font-size: 1.8rem;
             font-weight: 700;
-            text-decoration: none;
-            color: white;
         }
 
         .logo i {
@@ -537,78 +534,11 @@
 
         .modal-header {
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .modal-header h2 {
             color: var(--primary);
-        }
-
-        /* Tool Demo Pages */
-        .tool-demo {
-            padding: 40px;
-            background: white;
-            border-radius: 10px;
-            margin: 30px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .tool-demo h2 {
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .upload-area {
-            border: 2px dashed var(--primary);
-            border-radius: 10px;
-            padding: 40px;
-            text-align: center;
-            margin: 20px 0;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .upload-area:hover {
-            background-color: rgba(67, 97, 238, 0.05);
-        }
-        
-        .upload-icon {
-            font-size: 50px;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .tool-actions {
-            display: flex;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .action-btn {
-            padding: 12px 25px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .action-btn:hover {
-            background: var(--secondary);
-        }
-        
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        
-        .back-btn i {
-            margin-right: 8px;
         }
 
         /* Responsive Design */
@@ -650,10 +580,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-            
-            .tool-actions {
-                flex-direction: column;
-            }
         }
 
         @media (max-width: 576px) {
@@ -663,14 +589,6 @@
             
             .section-header h2 {
                 font-size: 2rem;
-            }
-            
-            .tool-demo {
-                padding: 20px;
-            }
-            
-            .upload-area {
-                padding: 20px;
             }
         }
 
@@ -714,10 +632,10 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">
+                <div class="logo">
                     <i class="fas fa-tools"></i>
                     <span>ToolKit</span>
-                </a>
+                </div>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
@@ -804,7 +722,7 @@
                     <div class="tool-content">
                         <h3>Image Compressor</h3>
                         <p>Reduce image file size without noticeable quality loss</p>
-                        <a href="/Toolkit-lab.github.io/img-compress.html">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href= class="/Toolkit-lab.github.io/img-compress.html">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -815,7 +733,7 @@
                     <div class="tool-content">
                         <h3>PDF Compressor</h3>
                         <p>Reduce PDF file size while maintaining quality</p>
-                        <a href="#pdf-compressor-demo" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="/Toolkit-lab.github.io/pdf-compress.html" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -826,65 +744,8 @@
                     <div class="tool-content">
                         <h3>Video Compressor</h3>
                         <p>Compress videos for faster sharing and streaming</p>
-                        <a href="#video-compressor-demo" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="/Toolkit-lab.github.io/video-compress.html" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Image Compressor Demo -->
-    <section class="tools-section" id="image-compressor-demo">
-        <div class="container">
-            <a href="#" class="back-btn"><i class="fas fa-arrow-left"></i> Back to All Tools</a>
-            
-            <div class="section-header">
-                <h2>Image Compressor</h2>
-                <p>Reduce image file size without losing quality</p>
-            </div>
-            
-            <div class="tool-demo">
-                <div class="upload-area" id="imageUploadArea">
-                    <div class="upload-icon">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </div>
-                    <h3>Upload an Image</h3>
-                    <p>Click to browse or drag and drop your image here</p>
-                    <p>Supported formats: JPG, PNG, WebP</p>
-                </div>
-                
-                <div class="tool-actions">
-                    <button class="action-btn">Compress Image</button>
-                    <button class="action-btn">Download Compressed Image</button>
-                </div>
-                
-                <div id="imagePreview"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PDF Compressor Demo -->
-    <section class="tools-section" id="pdf-compressor-demo">
-        <div class="container">
-            <a href="#" class="back-btn"><i class="fas fa-arrow-left"></i> Back to All Tools</a>
-            
-            <div class="section-header">
-                <h2>PDF Compressor</h2>
-                <p>Reduce PDF file size while maintaining quality</p>
-            </div>
-            
-            <div class="tool-demo">
-                <div class="upload-area" id="pdfUploadArea">
-                    <div class="upload-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h3>Upload a PDF</h3>
-                    <p>Click to browse or drag and drop your PDF here</p>
-                </div>
-                
-                <div class="tool-actions">
-                    <button class="action-btn">Compress PDF</button>
-                    <button class="action-btn">Download Compressed PDF</button>
                 </div>
             </div>
         </div>
@@ -906,7 +767,7 @@
                     <div class="tool-content">
                         <h3>Image Converter</h3>
                         <p>Convert between JPG, PNG, WEBP, and other formats</p>
-                        <a href="#image-converter-demo" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="/Toolkit-lab.github.io/img-convert.html" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -917,7 +778,7 @@
                     <div class="tool-content">
                         <h3>PDF to Word Converter</h3>
                         <p>Convert PDF files to editable Word documents</p>
-                        <a href="#pdf-to-word-demo" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="/Toolkit-lab.github.io/pdftoword-convert.html" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -928,7 +789,7 @@
                     <div class="tool-content">
                         <h3>Document Converter</h3>
                         <p>Convert between various document formats</p>
-                        <a href="#document-converter-demo" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                        <a href="/Toolkit-lab.github.io/doc-convert.html" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -1070,16 +931,16 @@
                 <div class="footer-column">
                     <h3>Image Tools</h3>
                     <ul>
-                        <li><a href="#image-compressor-demo">Image Compressor</a></li>
-                        <li><a href="#image-converter-demo">Image Converter</a></li>
+                        <li><a href="/Toolkit-lab.github.io/img-compress.html">Image Compressor</a></li>
+                        <li><a href="/Toolkit-lab.github.io/img-convert.html">Image Converter</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>PDF Tools</h3>
                     <ul>
-                        <li><a href="#pdf-compressor-demo">PDF Compressor</a></li>
-                        <li><a href="#pdf-to-word-demo">PDF to Word</a></li>
+                        <li><a href="/Toolkit-lab.github.io/pdf-compress.html">PDF Compressor</a></li>
+                        <li><a href="/Toolkit-lab.github.io/pdftoword-convert.html">PDF to Word</a></li>
                     </ul>
                 </div>
                 
@@ -1132,12 +993,12 @@
             <p>We'd love to hear from you! Whether you have a question, feedback, or need support, our team is here to help.</p>
             
             <h3>Get in Touch</h3>
-            <p><strong>Email:</strong> support@toolkit.com</p>
-            <p><strong>Twitter:</strong> @toolkit</p>
-            <p><strong>Facebook:</strong> facebook.com/toolkit</p>
+            <p><strong>Email:</strong> <a href="mailto:support@toolkit.com">support@toolkit.com</a></p>
+            <p><strong>Twitter:</strong> <a href="https://twitter.com/toolkit" target="_blank">@toolkit</a></p>
+            <p><strong>Facebook:</strong> <a href="https://facebook.com/toolkit" target="_blank">facebook.com/toolkit</a></p>
             
             <h3>Report an Issue</h3>
-            <p>If you're experiencing problems with any of our tools, please contact us at bugs@toolkit.com with the following information:</p>
+            <p>If you're experiencing problems with any of our tools, please contact us at <a href="mailto:bugs@toolkit.com">bugs@toolkit.com</a> with the following information:</p>
             <ul>
                 <li>Which tool you were using</li>
                 <li>What you were trying to do</li>
@@ -1146,7 +1007,7 @@
             </ul>
             
             <h3>Feature Requests</h3>
-            <p>Have an idea for a new tool or feature? We're always looking for ways to improve! Send your suggestions to ideas@toolkit.com.</p>
+            <p>Have an idea for a new tool or feature? We're always looking for ways to improve! Send your suggestions to <a href="mailto:ideas@toolkit.com">ideas@toolkit.com</a>.</p>
             
             <p>We typically respond to all inquiries within 24-48 hours.</p>
         </div>
@@ -1199,7 +1060,7 @@
             <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last Updated" date.</p>
             
             <h3>Contact Us</h3>
-            <p>If you have any questions about this Privacy Policy, please contact us at privacy@toolkit.com.</p>
+            <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:privacy@toolkit.com">privacy@toolkit.com</a>.</p>
         </div>
     </div>
 
@@ -1219,14 +1080,11 @@
             }
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // Smooth scrolling for category links
+        document.querySelectorAll('.category-card a').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
@@ -1234,9 +1092,6 @@
                         top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
-                    
-                    // Close mobile menu if open
-                    document.getElementById('mainNav').classList.remove('active');
                 }
             });
         });
@@ -1260,19 +1115,6 @@
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
                 }
-            });
-        });
-
-        // Demo tool functionality
-        document.querySelectorAll('.upload-area').forEach(area => {
-            area.addEventListener('click', function() {
-                alert('In a real implementation, this would open a file browser to select a file.');
-            });
-        });
-
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                alert('This is a demo. In a real implementation, this would process your file.');
             });
         });
     </script>
