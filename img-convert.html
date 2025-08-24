@@ -238,6 +238,7 @@
         
         .image-info {
             flex: 1 1 300px;
+            position: relative;
         }
         
         .image-info h4 {
@@ -482,6 +483,105 @@
             background: #000;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
+        
+        /* Refresh notification */
+        .refresh-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            display: none;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            animation: slideInRight 0.5s ease;
+            max-width: 350px;
+        }
+        
+        .refresh-notification.show {
+            display: flex;
+        }
+        
+        .refresh-icon {
+            font-size: 24px;
+            color: #f44336;
+        }
+        
+        .refresh-content {
+            flex: 1;
+        }
+        
+        .refresh-content h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .refresh-content p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .refresh-close {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        @keyframes slideInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Tooltip for refresh button */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 140px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -70px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+        }
+        
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -584,6 +684,12 @@
                 <div class="action-buttons">
                     <button class="convert-btn" id="convertBtn" disabled>Compress Image</button>
                     <button class="download-btn" id="downloadBtn" disabled>Download Compressed Image</button>
+                    <div class="tooltip">
+                        <button class="refresh-btn" id="refreshBtn" style="background: #f44336; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.3s; flex: 1; box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);">
+                            <i class="fas fa-sync-alt"></i> Refresh Tool
+                        </button>
+                        <span class="tooltiptext">Reset the tool if experiencing issues</span>
+                    </div>
                 </div>
                 
                 <div class="premium-features">
@@ -642,6 +748,20 @@
         <p>This tool processes images directly in your browser for privacy and speed.</p>
     </footer>
 
+    <!-- Refresh Notification -->
+    <div class="refresh-notification" id="refresh-notification">
+        <div class="refresh-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <div class="refresh-content">
+            <h4>Experiencing Issues?</h4>
+            <p>If the compression tool is not working correctly, please refresh the page to reset it.</p>
+        </div>
+        <button class="refresh-close" id="refresh-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // DOM Elements
@@ -657,6 +777,7 @@
             const heightInput = document.getElementById('heightInput');
             const convertBtn = document.getElementById('convertBtn');
             const downloadBtn = document.getElementById('downloadBtn');
+            const refreshBtn = document.getElementById('refreshBtn');
             const loader = document.getElementById('loader');
             const originalImagePlaceholder = document.getElementById('originalImagePlaceholder');
             const compressedImagePlaceholder = document.getElementById('compressedImagePlaceholder');
@@ -664,12 +785,20 @@
             const compressedSize = document.getElementById('compressedSize');
             const sizeReduction = document.getElementById('sizeReduction');
             const compressionRatio = document.getElementById('compressionRatio');
+            const refreshNotification = document.getElementById('refresh-notification');
+            const refreshClose = document.getElementById('refresh-close');
             
             let imageFile = null;
             let convertedImageBlob = null;
             let originalWidth = 0;
             let originalHeight = 0;
             let originalImageDataUrl = '';
+            let issueDetected = false;
+            
+            // Show refresh notification after some time or if issues detected
+            setTimeout(() => {
+                showRefreshNotification();
+            }, 15000);
             
             // Event Listeners
             uploadBtn.addEventListener('click', () => fileInput.click());
@@ -726,16 +855,35 @@
             
             downloadBtn.addEventListener('click', downloadImage);
             
+            // Refresh button
+            refreshBtn.addEventListener('click', function() {
+                window.location.reload();
+            });
+            
+            // Close refresh notification
+            refreshClose.addEventListener('click', function() {
+                refreshNotification.classList.remove('show');
+            });
+            
+            // Show refresh notification
+            function showRefreshNotification() {
+                refreshNotification.classList.add('show');
+            }
+            
             // Functions
             function handleFileSelect(e) {
                 const file = e.target.files[0];
                 if (!file || !file.type.includes('image')) {
                     alert('Please select a valid image file.');
+                    issueDetected = true;
+                    showRefreshNotification();
                     return;
                 }
                 
                 if (file.size > 20 * 1024 * 1024) {
                     alert('File size exceeds 20MB limit. Please choose a smaller image.');
+                    issueDetected = true;
+                    showRefreshNotification();
                     return;
                 }
                 
@@ -833,6 +981,14 @@
                                 break;
                             case 'webp':
                                 mimeType = 'image/webp';
+                                // Check if browser supports WebP
+                                try {
+                                    canvas.toDataURL('image/webp');
+                                } catch (e) {
+                                    alert('WebP is not supported in your browser. Using JPEG format instead.');
+                                    formatSelect.value = 'jpeg';
+                                    mimeType = 'image/jpeg';
+                                }
                                 break;
                             case 'gif':
                                 mimeType = 'image/gif';
@@ -865,6 +1021,12 @@
                         const ratio = (compressedSizeBytes / originalSizeBytes).toFixed(2);
                         compressionRatio.textContent = `${ratio}:1`;
                         
+                        // Check if compression actually reduced size
+                        if (compressedSizeBytes >= originalSizeBytes && quality < 1) {
+                            issueDetected = true;
+                            showRefreshNotification();
+                        }
+                        
                         // Create blob for download
                         convertedImageBlob = dataURLToBlob(compressedDataUrl);
                         
@@ -878,11 +1040,21 @@
                 }, 500);
             }
             
-            function calculateDataUrlSize(dataUrl) {
-                // Remove the data:image/...;base64, part
-                const base64 = dataUrl.split(',')[1];
-                // Calculate size in bytes: (base64 length * 3) / 4 - padding
-                return (base64.length * 3) / 4;
+            // Fixed function to calculate data URL size in bytes
+            function calculateDataUrlSize(dataURL) {
+                try {
+                    // Remove the data:image/...;base64, part
+                    const base64 = dataURL.split(',')[1];
+                    
+                    // Calculate the actual size in bytes
+                    const padding = (base64.match(/=/g) || []).length;
+                    return (base64.length * 3) / 4 - padding;
+                } catch (e) {
+                    console.error("Error calculating data URL size:", e);
+                    issueDetected = true;
+                    showRefreshNotification();
+                    return 0;
+                }
             }
             
             function dataURLToBlob(dataUrl) {
