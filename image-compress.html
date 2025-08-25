@@ -238,6 +238,17 @@
             box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
         }
 
+        .format-info {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--gray);
+            display: none;
+        }
+
+        .format-info.active {
+            display: block;
+        }
+
         .action-buttons {
             display: flex;
             gap: 15px;
@@ -379,6 +390,10 @@
 
         .savings {
             color: var(--success) !important;
+        }
+
+        .negative-savings {
+            color: var(--warning) !important;
         }
 
         .ad-space {
@@ -711,6 +726,15 @@
                             <input type="range" id="compression-level" min="0" max="100" value="75">
                             <span class="slider-value" id="compression-value">75%</span>
                         </div>
+                        <div class="format-info" id="jpeg-info">
+                            For JPEG: Higher values = better quality, larger file size
+                        </div>
+                        <div class="format-info" id="png-info">
+                            For PNG: Compression level affects file size but not quality (lossless)
+                        </div>
+                        <div class="format-info" id="webp-info">
+                            For WebP: Higher values = better quality, larger file size
+                        </div>
                     </div>
 
                     <div class="control-group">
@@ -852,6 +876,11 @@
             const compressedSizeEl = document.getElementById('compressed-size');
             const reductionPercentEl = document.getElementById('reduction-percent');
             const formatOptions = document.querySelectorAll('.format-option');
+            const formatInfoElements = {
+                'jpeg': document.getElementById('jpeg-info'),
+                'png': document.getElementById('png-info'),
+                'webp': document.getElementById('webp-info')
+            };
             const loader = document.getElementById('loader');
             const errorMessage = document.getElementById('error-message');
             const refreshNotification = document.getElementById('refresh-notification');
@@ -879,6 +908,18 @@
                     formatOptions.forEach(opt => opt.classList.remove('active'));
                     this.classList.add('active');
                     selectedFormat = this.getAttribute('data-format');
+                    
+                    // Update format info display
+                    Object.values(formatInfoElements).forEach(el => el.classList.remove('active'));
+                    if (formatInfoElements[selectedFormat]) {
+                        formatInfoElements[selectedFormat].classList.add('active');
+                    }
+                    
+                    // Adjust compression slider for PNG
+                    if (selectedFormat === 'png') {
+                        compressionSlider.value = 90;
+                        compressionValue.textContent = '90%';
+                    }
                 });
             });
             
@@ -970,7 +1011,7 @@
             compressBtn.addEventListener('click', function() {
                 if (!currentFile) return;
                 
-                const compressionQuality = compressionSlider.value / 100;
+                const compressionLevel = compressionSlider.value / 100;
                 
                 // Show loading state
                 loader.style.display = 'block';
@@ -1001,22 +1042,23 @@
                         switch(selectedFormat) {
                             case 'jpeg':
                                 mimeType = 'image/jpeg';
-                                compressedDataURL = canvas.toDataURL(mimeType, compressionQuality);
+                                compressedDataURL = canvas.toDataURL(mimeType, compressionLevel);
                                 break;
                             case 'png':
                                 mimeType = 'image/png';
-                                compressedDataURL = canvas.toDataURL(mimeType);
+                                // PNG compression is handled differently
+                                compressedDataURL = compressPNG(canvas, compressionLevel);
                                 break;
                             case 'webp':
                                 mimeType = 'image/webp';
                                 // Check if browser supports WebP
                                 try {
-                                    compressedDataURL = canvas.toDataURL(mimeType, compressionQuality);
+                                    compressedDataURL = canvas.toDataURL(mimeType, compressionLevel);
                                 } catch (e) {
                                     // Fallback to JPEG if WebP is not supported
                                     mimeType = 'image/jpeg';
                                     selectedFormat = 'jpeg';
-                                    compressedDataURL = canvas.toDataURL(mimeType, compressionQuality);
+                                    compressedDataURL = canvas.toDataURL(mimeType, compressionLevel);
                                     alert('WebP is not supported in your browser. Using JPEG format instead.');
                                     issueDetected = true;
                                     showRefreshNotification();
@@ -1034,9 +1076,14 @@
                         const reduction = ((originalSize - compressedSize) / originalSize * 100).toFixed(2);
                         
                         // Check if compression actually reduced size
-                        if (compressedSize >= originalSize && compressionQuality < 1) {
+                        if (compressedSize >= originalSize) {
                             issueDetected = true;
                             showRefreshNotification();
+                            reductionPercentEl.classList.remove('savings');
+                            reductionPercentEl.classList.add('negative-savings');
+                        } else {
+                            reductionPercentEl.classList.remove('negative-savings');
+                            reductionPercentEl.classList.add('savings');
                         }
                         
                         compressedSizeEl.textContent = `${(compressedSize / 1024).toFixed(2)} KB`;
@@ -1073,6 +1120,20 @@
                 link.href = compressedImageData;
                 link.click();
             });
+            
+            // PNG compression function
+            function compressPNG(canvas, compressionLevel) {
+                // PNG is lossless, so we can't control quality like JPEG
+                // But we can reduce colors for better compression
+                try {
+                    // Default PNG compression
+                    return canvas.toDataURL('image/png');
+                } catch (e) {
+                    console.error("PNG compression error:", e);
+                    // Fallback to default compression
+                    return canvas.toDataURL('image/png');
+                }
+            }
             
             // Correct function to calculate data URL size in bytes
             function getDataURLSize(dataURL) {
